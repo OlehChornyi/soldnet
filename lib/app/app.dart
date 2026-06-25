@@ -113,7 +113,8 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
               opacity: isAppNameShown ? 1 : 0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: AppButtonOutlined(text: 'Go Go Go', onTap: () {}),
+                child: AppButtonOutlined(
+                    text: 'Go Go Go', onTap: () => router.go(ScreenPaths.home)),
               ),
             )
           ],

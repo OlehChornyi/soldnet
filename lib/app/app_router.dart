@@ -5,14 +5,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:soldnet/app/app.dart';
+import 'package:soldnet/presentation/pages/chat_page.dart' show ChatPage;
 import 'package:soldnet/presentation/pages/home_page.dart';
 import 'package:soldnet/presentation/pages/profile_page.dart';
+import 'package:soldnet/presentation/widgets/app/nav_bar/app_nav_bar.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
 class ScreenPaths {
   static String redirection = '/';
   static String home = '/home';
+  static String chat = '/chat';
   static String profile = '/profile';
 }
 
@@ -28,11 +31,12 @@ final GoRouter router = GoRouter(
         return Scaffold(
           extendBody: true,
           body: child,
-          // bottomNavigationBar: AppNavBar(),
+          bottomNavigationBar: AppNavBar(),
         );
       },
       routes: [
         AppRoute(ScreenPaths.home, (_) => HomePage(), noTransition: true),
+        AppRoute(ScreenPaths.chat, (_) => ChatPage(), noTransition: true),
         AppRoute(ScreenPaths.profile, (_) => ProfilePage(), noTransition: true),
       ],
     ),
