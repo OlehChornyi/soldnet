@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soldnet/app/app.dart';
 
-void main() => runApp(const App());
+void main() => runApp(ProviderScope(child: const App()));

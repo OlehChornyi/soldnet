@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soldnet/app/app_router.dart';
 import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/theme/app_text_styles.dart';
+import 'package:soldnet/presentation/widgets/app/button/app_button_outlined.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -45,9 +46,9 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
       setState(() => isAppNameShown = true);
       // final userNotirier = ref.read(storeUserProvider.notifier);
       // final token = await userNotirier.getTokenFromSharedPreferences();
-      // await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 3));
       // if (token.isNotEmpty) {
-      //   router.go(ScreenPaths.home);
+      // router.go(ScreenPaths.home);
       // } else {
       //   router.go(ScreenPaths.signin);
       // }
@@ -104,6 +105,17 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 12,
+            ),
+            AnimatedOpacity(
+              duration: Duration(seconds: 3),
+              opacity: isAppNameShown ? 1 : 0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: AppButtonOutlined(text: 'Go Go Go', onTap: () {}),
+              ),
+            )
           ],
         ),
       ),
