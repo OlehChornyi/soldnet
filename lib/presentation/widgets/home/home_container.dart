@@ -32,6 +32,7 @@ class _HomeContainerState extends State<HomeContainer> {
   @override
   Widget build(BuildContext context) {
     final paddingTop = MediaQuery.of(context).padding.top;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return SingleChildScrollView(
       controller: _scrollController,
@@ -51,9 +52,14 @@ class _HomeContainerState extends State<HomeContainer> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(homeItems[index].bgImage)),
+                child: Container(
+                  width: screenWidth - 32,
+                  height: (screenWidth - 32) / 4,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                          image: AssetImage(homeItems[index].bgImage))),
+                ),
               );
             },
           ),
