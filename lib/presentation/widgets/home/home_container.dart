@@ -1,13 +1,40 @@
 import 'package:flutter/widgets.dart';
 
-class HomeContainer extends StatelessWidget {
+class HomeContainer extends StatefulWidget {
   const HomeContainer({super.key});
+
+  @override
+  State<HomeContainer> createState() => _HomeContainerState();
+}
+
+class _HomeContainerState extends State<HomeContainer> {
+  final _scrollController = ScrollController();
+  bool _isUserReachedPageBottom = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent) {
+          setState(() => _isUserReachedPageBottom = true);
+        }
+        if (_scrollController.position.pixels ==
+            _scrollController.position.minScrollExtent) {
+          setState(() => _isUserReachedPageBottom = false);
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final paddingTop = MediaQuery.of(context).padding.top;
 
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Column(
         children: [
           SizedBox(
@@ -30,11 +57,15 @@ class HomeContainer extends StatelessWidget {
               );
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, top: 100),
-            child: Image.asset(
-              'assets/images/redirection_page/kitty.png',
-              height: 200,
+          AnimatedOpacity(
+            duration: Duration(milliseconds: 500),
+            opacity: _isUserReachedPageBottom ? 1 : 0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, top: 100),
+              child: Image.asset(
+                'assets/images/redirection_page/kitty.png',
+                height: 200,
+              ),
             ),
           ),
           const SizedBox(
