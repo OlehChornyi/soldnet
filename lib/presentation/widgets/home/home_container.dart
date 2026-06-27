@@ -1,3 +1,4 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/widgets.dart';
 import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/theme/app_text_styles.dart';
@@ -50,26 +51,35 @@ class _HomeContainerState extends State<HomeContainer> {
             itemBuilder: (context, item, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Container(
-                  width: screenWidth - 32,
-                  height: (screenWidth - 32) / 4,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      image: DecorationImage(
-                          image: AssetImage(homeItems[index].bgImage))),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: FlipCard(
+                  back: Container(
+                      width: screenWidth - 32,
+                      height: (screenWidth - 32) / 4,
                       decoration: BoxDecoration(
-                          color: AppColors.black.withAlpha(150),
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Text(
-                        homeItems[index].label,
-                        style: AppTextStyles.s20w600(color: AppColors.white),
+                        color: AppColors.black,
+                        borderRadius: BorderRadius.circular(12),
+                      )),
+                  front: Container(
+                    width: screenWidth - 32,
+                    height: (screenWidth - 32) / 4,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                            image: AssetImage(homeItems[index].bgImage))),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                            color: AppColors.black.withAlpha(150),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Text(
+                          homeItems[index].label,
+                          style: AppTextStyles.s20w600(color: AppColors.white),
+                        ),
                       ),
                     ),
                   ),
