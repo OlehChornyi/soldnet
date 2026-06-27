@@ -44,3 +44,5 @@ flutter:
     - assets/images/app_icon/
     - assets/images/splash_screen/
     - assets/images/redirection_page/
+    - assets/icons/
+    - assets/icons/general/

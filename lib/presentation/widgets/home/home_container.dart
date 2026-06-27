@@ -1,5 +1,7 @@
 import 'package:flip_card/flip_card.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/theme/app_text_styles.dart';
 import 'package:soldnet/presentation/widgets/app/animations/app_animations_fade_in_list.dart';
@@ -53,12 +55,41 @@ class _HomeContainerState extends State<HomeContainer> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: FlipCard(
                   back: Container(
-                      width: screenWidth - 32,
-                      height: (screenWidth - 32) / 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.black,
-                        borderRadius: BorderRadius.circular(12),
-                      )),
+                    width: screenWidth - 32,
+                    height: (screenWidth - 32) / 4,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: AppColors.black,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/general/mg.svg'),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'GAME OVER',
+                                  style: AppTextStyles.s20w600(
+                                      color: AppColors.white),
+                                ),
+                                Text(
+                                  '[flip card]',
+                                  style: AppTextStyles.s16w500(
+                                      color: AppColors.grey170),
+                                ),
+                              ],
+                            )
+                          ],
+                        )),
+                  ),
                   front: Container(
                     width: screenWidth - 32,
                     height: (screenWidth - 32) / 4,
