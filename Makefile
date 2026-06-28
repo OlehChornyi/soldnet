@@ -15,3 +15,7 @@ dependencies_conflicts:
 	flutter --version
 	flutter upgrade
 	flutter pub upgrade
+
+clean_a_mess:
+	flutter clean
+	flutter pub get

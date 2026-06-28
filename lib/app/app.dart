@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soldnet/app/app_router.dart';
@@ -35,25 +36,18 @@ class RedirectionPage extends ConsumerStatefulWidget {
 }
 
 class _RedirectionPageState extends ConsumerState<RedirectionPage> {
-  bool isAppNameShown = false;
+  bool _isAppNameShown = false;
+  final _player = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
-    _redirect();
+    _playAnimation();
   }
 
-  void _redirect() {
+  void _playAnimation() async {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      setState(() => isAppNameShown = true);
-      // final userNotirier = ref.read(storeUserProvider.notifier);
-      // final token = await userNotirier.getTokenFromSharedPreferences();
-      await Future.delayed(Duration(seconds: 3));
-      // if (token.isNotEmpty) {
-      // router.go(ScreenPaths.home);
-      // } else {
-      //   router.go(ScreenPaths.signin);
-      // }
+      setState(() => _isAppNameShown = true);
     });
   }
 
@@ -69,7 +63,7 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
           children: [
             AnimatedOpacity(
               duration: Duration(seconds: 2),
-              opacity: isAppNameShown ? 1 : 0,
+              opacity: _isAppNameShown ? 1 : 0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Image.asset('assets/images/redirection_page/logo.png'),
@@ -85,7 +79,7 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
                   AnimatedSize(
                     duration: Duration(seconds: 1),
                     child: SizedBox(
-                      width: isAppNameShown ? 0 : screenWidth,
+                      width: _isAppNameShown ? 0 : screenWidth,
                     ),
                   ),
                   Stack(
@@ -112,11 +106,17 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
             ),
             AnimatedOpacity(
               duration: Duration(seconds: 3),
-              opacity: isAppNameShown ? 1 : 0,
+              opacity: _isAppNameShown ? 1 : 0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: AppButtonOutlined(
-                    text: 'Go Go Go', onTap: () => router.go(ScreenPaths.home)),
+                    text: 'Go Go Go',
+                    onTap: () async {
+                      await _player
+                          .play(AssetSource('sounds/guns/revolver.wav'));
+
+                      // router.go(ScreenPaths.home);
+                    }),
               ),
             )
           ],

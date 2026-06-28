@@ -25,6 +25,7 @@ dependencies:
   shared_preferences: ^2.5.5
   connectivity_plus: ^7.1.1
   flip_card: ^0.7.0
+  audioplayers: ^6.8.1
 
 dev_dependencies:
   flutter_test:
@@ -46,3 +47,4 @@ flutter:
     - assets/images/redirection_page/
     - assets/icons/
     - assets/icons/general/
+    - assets/sounds/guns/
