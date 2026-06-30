@@ -7,7 +7,7 @@ void main() => runApp(ProviderScope(child: const App()));
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // 2026.06.28 | Add sounds to the app.
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// 2026.06.29 | Home sections: find at least 6 sections (create).
-//            | Profile: minimal profile.
-//     =D     | Chat: textChat, audioCall, videoCall, groups.
+// 2026.06.29 | 1. Home sections: find at least 6 sections (create).
+//            | 2. Profile: minimal profile.
+//     =D     | 3. Chat: textChat, audioCall, videoCall, groups.
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

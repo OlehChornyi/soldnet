@@ -112,10 +112,10 @@ class _RedirectionPageState extends ConsumerState<RedirectionPage> {
                 child: AppButtonOutlined(
                     text: 'Go Go Go',
                     onTap: () async {
-                      await _player
-                          .play(AssetSource('sounds/guns/revolver.wav'));
+                      // await _player
+                      //     .play(AssetSource('sounds/guns/revolver.wav'));
 
-                      // router.go(ScreenPaths.home);
+                      router.go(ScreenPaths.home);
                     }),
               ),
             )
