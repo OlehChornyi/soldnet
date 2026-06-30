@@ -16,4 +16,7 @@ class AppColors {
   static const Color grey220 = Color.fromRGBO(220, 220, 220, 1);
 
   static const Color selectedNavBarItem = Color.fromRGBO(0, 0, 0, 0.1);
+
+  static const Color action1 = Color.fromRGBO(247, 36, 191, 1);
+  static const Color action2 = Color.fromRGBO(169, 58, 255, 1);
 }

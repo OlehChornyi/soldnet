@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:soldnet/presentation/widgets/app/button/app_button_circle.dart';
 import 'package:soldnet/presentation/widgets/app/textfield/app_text_field.dart';
 
@@ -30,7 +29,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
             borderRadius: 24,
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 8),
         AppButtonCircle(
           onTap: _sendMessage,
           icon: Icons.send_rounded,
