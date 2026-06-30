@@ -46,7 +46,7 @@ class AppNavBar extends ConsumerWidget {
 typedef NavBarRecord = ({String key, IconData icon, String label});
 
 List<NavBarRecord> get navBarItems => [
-      (key: '/home', icon: Icons.home_rounded, label: 'Home'),
-      (key: '/chat', icon: Icons.message_rounded, label: 'Chat'),
-      (key: '/profile', icon: Icons.person_rounded, label: 'Profile'),
+      (key: '/home', icon: Icons.home_rounded, label: 'Дім'),
+      (key: '/chat', icon: Icons.message_rounded, label: 'Чат'),
+      (key: '/profile', icon: Icons.person_rounded, label: 'Профіль'),
     ];
