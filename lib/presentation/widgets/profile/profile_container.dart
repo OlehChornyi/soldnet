@@ -100,6 +100,12 @@ class ProfileContainer extends StatelessWidget {
                   )),
             ],
           ),
+          const SizedBox(
+            height: 12,
+          ),
+          Divider(
+            color: AppColors.primary,
+          ),
           IconButton(
               onPressed: () => context.go(ScreenPaths.redirection),
               icon: Icon(Icons.logout_rounded)),

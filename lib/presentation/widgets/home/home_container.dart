@@ -141,10 +141,22 @@ class _HomeContainerState extends State<HomeContainer> {
 typedef HomeItemRecord = ({String label, String bgImage});
 
 List<HomeItemRecord> get homeItems => [
-      (label: 'Blah', bgImage: 'assets/images/prints/snake.png'),
-      (label: 'Blah2', bgImage: 'assets/images/prints/zebra.png'),
-      (label: 'Blah3', bgImage: 'assets/images/prints/tiger.png'),
-      (label: 'Blah4', bgImage: 'assets/images/prints/cheeta.png'),
-      (label: 'Blah5', bgImage: 'assets/images/prints/leopard.png'),
-      (label: 'Blah6', bgImage: 'assets/images/prints/leaves.png'),
+      (label: 'Ресурси', bgImage: 'assets/images/prints/snake.png'),
+      (
+        label: 'Дуржавні програми підтримки ветеранів',
+        bgImage: 'assets/images/prints/zebra.png'
+      ),
+      (
+        label: 'Бізнеси засновані ветеранами',
+        bgImage: 'assets/images/prints/tiger.png'
+      ),
+      (label: 'Волонтерство', bgImage: 'assets/images/prints/cheeta.png'),
+      (
+        label: "Цивільне суспільство [кар'єра]",
+        bgImage: 'assets/images/prints/leopard.png'
+      ),
+      (
+        label: 'Саморозвиток\n[особистісне зростання]',
+        bgImage: 'assets/images/prints/leaves.png'
+      ),
     ];
