@@ -18,9 +18,7 @@ class ChatHeader extends ConsumerWidget {
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: chatState.tab == ChatTab.groups
-            ? AppColors.action1
-            : AppColors.action2,
+        color: AppColors.active,
       ),
       child: chatState.tab == ChatTab.dialog
           ? Center(

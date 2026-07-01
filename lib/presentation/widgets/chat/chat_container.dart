@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soldnet/models/utils/chat_tab.dart';
-import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/widgets/chat/chat_action_buttons.dart';
+import 'package:soldnet/presentation/widgets/chat/chat_dialog.dart';
+import 'package:soldnet/presentation/widgets/chat/chat_groups.dart';
 import 'package:soldnet/presentation/widgets/chat/chat_header.dart';
 import 'package:soldnet/presentation/widgets/chat/chat_text_field.dart';
 import 'package:soldnet/stores/store_chat.dart';
@@ -54,16 +55,17 @@ class _ChatContainerState extends ConsumerState<ChatContainer> {
           AnimatedPositioned(
               duration: Duration(milliseconds: 300),
               width: screenWidth - 32,
+              height: screenHeight - paddingTop - 122,
+              left: chatState.tab != ChatTab.dialog ? 16 : -screenWidth,
+              top: paddingTop + 122,
+              child: ChatGroups()),
+          AnimatedPositioned(
+              duration: Duration(milliseconds: 300),
+              width: screenWidth - 32,
               height: screenHeight - paddingBottom - paddingTop - 184,
               right: chatState.tab == ChatTab.dialog ? 16 : -screenWidth,
               bottom: paddingBottom + 64,
-              child: Container(
-                height: 200,
-                width: screenWidth - 32,
-                decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(12)),
-              )),
+              child: ChatDialog()),
           AnimatedPositioned(
               duration: Duration(milliseconds: 300),
               width: screenWidth - 32,
