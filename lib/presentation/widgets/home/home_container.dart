@@ -58,7 +58,7 @@ class _HomeContainerState extends State<HomeContainer> {
                     width: screenWidth - 32,
                     height: (screenWidth - 32) / 4,
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       color: AppColors.black,
                       borderRadius: BorderRadius.circular(12),
@@ -75,14 +75,20 @@ class _HomeContainerState extends State<HomeContainer> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'GAME OVER',
-                                  style: AppTextStyles.s20w600(
-                                      color: AppColors.white),
+                                SizedBox(
+                                  width: screenWidth - 104,
+                                  child: Text(
+                                    homeItems[index].label,
+                                    style: AppTextStyles.s20w600(
+                                        color: AppColors.white),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 4,
                                 ),
                                 Text(
-                                  '[flip card]',
-                                  style: AppTextStyles.s16w500(
+                                  '[свайпніть ліворуч]',
+                                  style: AppTextStyles.s12w500(
                                       color: AppColors.grey170),
                                 ),
                               ],
@@ -94,22 +100,24 @@ class _HomeContainerState extends State<HomeContainer> {
                     width: screenWidth - 32,
                     height: (screenWidth - 32) / 4,
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         image: DecorationImage(
                             image: AssetImage(homeItems[index].bgImage))),
                     child: Align(
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.bottomRight,
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        width: 40,
+                        height: 40,
                         decoration: BoxDecoration(
                             color: AppColors.black.withAlpha(150),
                             borderRadius: BorderRadius.circular(8)),
-                        child: Text(
-                          homeItems[index].label,
-                          style: AppTextStyles.s20w600(color: AppColors.white),
+                        child: Center(
+                          child: Icon(
+                            Icons.ads_click,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -143,7 +151,7 @@ typedef HomeItemRecord = ({String label, String bgImage});
 List<HomeItemRecord> get homeItems => [
       (label: 'Ресурси', bgImage: 'assets/images/prints/snake.png'),
       (
-        label: 'Дуржавні програми підтримки ветеранів',
+        label: 'Державні програми підтримки ветеранів',
         bgImage: 'assets/images/prints/zebra.png'
       ),
       (
@@ -156,7 +164,7 @@ List<HomeItemRecord> get homeItems => [
         bgImage: 'assets/images/prints/leopard.png'
       ),
       (
-        label: 'Саморозвиток\n[особистісне зростання]',
+        label: 'Саморозвиток [особистісне зростання]',
         bgImage: 'assets/images/prints/leaves.png'
       ),
     ];

@@ -13,6 +13,9 @@ class ChatDialog extends StatelessWidget {
       width: screenWidth - 32,
       decoration: BoxDecoration(
           color: AppColors.bgLight, borderRadius: BorderRadius.circular(12)),
+      child: Center(
+        child: Text('[ under construction ]'),
+      ),
     );
   }
 }

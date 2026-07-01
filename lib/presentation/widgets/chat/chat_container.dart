@@ -53,24 +53,30 @@ class _ChatContainerState extends ConsumerState<ChatContainer> {
               top: paddingTop + 8,
               child: ChatActionButtons()),
           AnimatedPositioned(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 500),
               width: screenWidth - 32,
               height: screenHeight - paddingTop - 122,
-              left: chatState.tab != ChatTab.dialog ? 16 : -screenWidth,
+              left: _areActionButtonsVisible && chatState.tab != ChatTab.dialog
+                  ? 16
+                  : -screenWidth,
               top: paddingTop + 122,
               child: ChatGroups()),
           AnimatedPositioned(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 500),
               width: screenWidth - 32,
               height: screenHeight - paddingBottom - paddingTop - 184,
-              right: chatState.tab == ChatTab.dialog ? 16 : -screenWidth,
+              right: _areActionButtonsVisible && chatState.tab == ChatTab.dialog
+                  ? 16
+                  : -screenWidth,
               bottom: paddingBottom + 64,
               child: ChatDialog()),
           AnimatedPositioned(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 500),
               width: screenWidth - 32,
               height: 48,
-              right: chatState.tab == ChatTab.dialog ? 16 : -screenWidth,
+              right: _areActionButtonsVisible && chatState.tab == ChatTab.dialog
+                  ? 16
+                  : -screenWidth,
               bottom: paddingBottom + 8,
               child: ChatTextField())
         ],
