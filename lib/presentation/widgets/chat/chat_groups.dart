@@ -22,7 +22,7 @@ class ChatGroups extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: AppColors.activeBrown,
+            color: AppColors.bgLight,
           ),
           child: Row(
             children: [

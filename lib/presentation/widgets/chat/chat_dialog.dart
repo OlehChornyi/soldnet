@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/widgets/chat/chat_dialog_message.dart';
 
 class ChatDialog extends StatelessWidget {
@@ -13,7 +12,12 @@ class ChatDialog extends StatelessWidget {
         width: screenWidth - 32,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         decoration: BoxDecoration(
-            color: AppColors.bgLight, borderRadius: BorderRadius.circular(12)),
+          // color: AppColors.bgLight,
+          borderRadius: BorderRadius.circular(12),
+          image: DecorationImage(
+              image: AssetImage('assets/images/chat/dialog_bg.png'),
+              fit: BoxFit.cover),
+        ),
         child: ListView.separated(
           itemCount: _messages.length,
           padding: EdgeInsets.zero,
