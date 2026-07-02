@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:soldnet/app/app_router.dart';
+import 'package:soldnet/models/utils/dialog_bg.dart';
 import 'package:soldnet/presentation/theme/app_colors.dart';
 import 'package:soldnet/presentation/theme/app_text_styles.dart';
 import 'package:soldnet/presentation/widgets/app/animations/app_animations_fade_in_list.dart';
 import 'package:soldnet/presentation/widgets/profile/profile_scroll.dart';
+import 'package:soldnet/stores/store_chat.dart';
 
-class ProfileContainer extends StatefulWidget {
+class ProfileContainer extends ConsumerStatefulWidget {
   const ProfileContainer({super.key});
 
   @override
-  State<ProfileContainer> createState() => _ProfileContainerState();
+  ConsumerState<ProfileContainer> createState() => _ProfileContainerState();
 }
 
-class _ProfileContainerState extends State<ProfileContainer> {
+class _ProfileContainerState extends ConsumerState<ProfileContainer> {
   bool _isScrollShown = false;
 
   @override
@@ -28,6 +31,8 @@ class _ProfileContainerState extends State<ProfileContainer> {
   Widget build(BuildContext context) {
     final paddingTop = MediaQuery.of(context).padding.top;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    final chatState = ref.watch(storeChatProvider);
 
     return Column(
       children: [
@@ -65,18 +70,35 @@ class _ProfileContainerState extends State<ProfileContainer> {
             const SizedBox(
               width: 16,
             ),
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: AppColors.primary),
-              child: Center(
-                child: Icon(
-                  Icons.person_rounded,
-                  size: 64,
-                  color: AppColors.bg,
+            Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: AppColors.primary),
+                  child: Center(
+                    child: Icon(
+                      Icons.person_rounded,
+                      size: 64,
+                      color: AppColors.bg,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    image: DecorationImage(
+                        image: AssetImage(
+                            getDataDialogBg(chatState.dialogBg).front)),
+                  ),
+                )
+              ],
             ),
             const SizedBox(
               width: 12,

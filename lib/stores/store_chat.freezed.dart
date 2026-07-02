@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$StoreChatModel {
   ChatTab get tab;
   List<String> get chatGroups;
+  DialogBg get dialogBg;
 
   /// Create a copy of StoreChatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -32,16 +33,18 @@ mixin _$StoreChatModel {
             other is StoreChatModel &&
             (identical(other.tab, tab) || other.tab == tab) &&
             const DeepCollectionEquality()
-                .equals(other.chatGroups, chatGroups));
+                .equals(other.chatGroups, chatGroups) &&
+            (identical(other.dialogBg, dialogBg) ||
+                other.dialogBg == dialogBg));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tab, const DeepCollectionEquality().hash(chatGroups));
+  int get hashCode => Object.hash(runtimeType, tab,
+      const DeepCollectionEquality().hash(chatGroups), dialogBg);
 
   @override
   String toString() {
-    return 'StoreChatModel(tab: $tab, chatGroups: $chatGroups)';
+    return 'StoreChatModel(tab: $tab, chatGroups: $chatGroups, dialogBg: $dialogBg)';
   }
 }
 
@@ -51,7 +54,7 @@ abstract mixin class $StoreChatModelCopyWith<$Res> {
           StoreChatModel value, $Res Function(StoreChatModel) _then) =
       _$StoreChatModelCopyWithImpl;
   @useResult
-  $Res call({ChatTab tab, List<String> chatGroups});
+  $Res call({ChatTab tab, List<String> chatGroups, DialogBg dialogBg});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$StoreChatModelCopyWithImpl<$Res>
   $Res call({
     Object? tab = null,
     Object? chatGroups = null,
+    Object? dialogBg = null,
   }) {
     return _then(_self.copyWith(
       tab: null == tab
@@ -79,6 +83,10 @@ class _$StoreChatModelCopyWithImpl<$Res>
           ? _self.chatGroups
           : chatGroups // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      dialogBg: null == dialogBg
+          ? _self.dialogBg
+          : dialogBg // ignore: cast_nullable_to_non_nullable
+              as DialogBg,
     ));
   }
 }
@@ -176,13 +184,14 @@ extension StoreChatModelPatterns on StoreChatModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(ChatTab tab, List<String> chatGroups)? $default, {
+    TResult Function(ChatTab tab, List<String> chatGroups, DialogBg dialogBg)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _StoreChatModel() when $default != null:
-        return $default(_that.tab, _that.chatGroups);
+        return $default(_that.tab, _that.chatGroups, _that.dialogBg);
       case _:
         return orElse();
     }
@@ -203,12 +212,13 @@ extension StoreChatModelPatterns on StoreChatModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(ChatTab tab, List<String> chatGroups) $default,
+    TResult Function(ChatTab tab, List<String> chatGroups, DialogBg dialogBg)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _StoreChatModel():
-        return $default(_that.tab, _that.chatGroups);
+        return $default(_that.tab, _that.chatGroups, _that.dialogBg);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -228,12 +238,13 @@ extension StoreChatModelPatterns on StoreChatModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(ChatTab tab, List<String> chatGroups)? $default,
+    TResult? Function(ChatTab tab, List<String> chatGroups, DialogBg dialogBg)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _StoreChatModel() when $default != null:
-        return $default(_that.tab, _that.chatGroups);
+        return $default(_that.tab, _that.chatGroups, _that.dialogBg);
       case _:
         return null;
     }
@@ -244,7 +255,9 @@ extension StoreChatModelPatterns on StoreChatModel {
 
 class _StoreChatModel implements StoreChatModel {
   const _StoreChatModel(
-      {required this.tab, required final List<String> chatGroups})
+      {required this.tab,
+      required final List<String> chatGroups,
+      required this.dialogBg})
       : _chatGroups = chatGroups;
 
   @override
@@ -256,6 +269,9 @@ class _StoreChatModel implements StoreChatModel {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_chatGroups);
   }
+
+  @override
+  final DialogBg dialogBg;
 
   /// Create a copy of StoreChatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -272,16 +288,18 @@ class _StoreChatModel implements StoreChatModel {
             other is _StoreChatModel &&
             (identical(other.tab, tab) || other.tab == tab) &&
             const DeepCollectionEquality()
-                .equals(other._chatGroups, _chatGroups));
+                .equals(other._chatGroups, _chatGroups) &&
+            (identical(other.dialogBg, dialogBg) ||
+                other.dialogBg == dialogBg));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tab, const DeepCollectionEquality().hash(_chatGroups));
+  int get hashCode => Object.hash(runtimeType, tab,
+      const DeepCollectionEquality().hash(_chatGroups), dialogBg);
 
   @override
   String toString() {
-    return 'StoreChatModel(tab: $tab, chatGroups: $chatGroups)';
+    return 'StoreChatModel(tab: $tab, chatGroups: $chatGroups, dialogBg: $dialogBg)';
   }
 }
 
@@ -293,7 +311,7 @@ abstract mixin class _$StoreChatModelCopyWith<$Res>
       __$StoreChatModelCopyWithImpl;
   @override
   @useResult
-  $Res call({ChatTab tab, List<String> chatGroups});
+  $Res call({ChatTab tab, List<String> chatGroups, DialogBg dialogBg});
 }
 
 /// @nodoc
@@ -311,6 +329,7 @@ class __$StoreChatModelCopyWithImpl<$Res>
   $Res call({
     Object? tab = null,
     Object? chatGroups = null,
+    Object? dialogBg = null,
   }) {
     return _then(_StoreChatModel(
       tab: null == tab
@@ -321,6 +340,10 @@ class __$StoreChatModelCopyWithImpl<$Res>
           ? _self._chatGroups
           : chatGroups // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      dialogBg: null == dialogBg
+          ? _self.dialogBg
+          : dialogBg // ignore: cast_nullable_to_non_nullable
+              as DialogBg,
     ));
   }
 }

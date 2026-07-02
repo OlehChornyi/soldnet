@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:soldnet/models/utils/dialog_bg.dart';
 import 'package:soldnet/presentation/widgets/chat/chat_dialog_message.dart';
+import 'package:soldnet/stores/store_chat.dart';
 
-class ChatDialog extends StatelessWidget {
+class ChatDialog extends ConsumerWidget {
   const ChatDialog({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+
+    final chatState = ref.watch(storeChatProvider);
 
     return Container(
         width: screenWidth - 32,
@@ -15,7 +20,7 @@ class ChatDialog extends StatelessWidget {
           // color: AppColors.bgLight,
           borderRadius: BorderRadius.circular(12),
           image: DecorationImage(
-              image: AssetImage('assets/images/chat/dialog_bg.png'),
+              image: AssetImage(getDataDialogBg(chatState.dialogBg).bg),
               fit: BoxFit.cover),
         ),
         child: ListView.separated(

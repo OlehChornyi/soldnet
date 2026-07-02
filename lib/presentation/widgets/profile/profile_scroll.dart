@@ -1,17 +1,20 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:soldnet/models/utils/dialog_bg.dart';
 import 'package:soldnet/presentation/theme/app_colors.dart';
+import 'package:soldnet/stores/store_chat.dart';
 
-class ProfileScroll extends StatefulWidget {
+class ProfileScroll extends ConsumerStatefulWidget {
   const ProfileScroll({super.key});
 
   @override
-  State<ProfileScroll> createState() => _ProfileScrollState();
+  ConsumerState<ProfileScroll> createState() => _ProfileScrollState();
 }
 
-class _ProfileScrollState extends State<ProfileScroll> {
+class _ProfileScrollState extends ConsumerState<ProfileScroll> {
   late final ScrollController _controller;
   late final Ticker _ticker;
   final double _speed = 20;
@@ -43,6 +46,8 @@ class _ProfileScrollState extends State<ProfileScroll> {
 
   @override
   Widget build(BuildContext context) {
+    final chatNotifier = ref.read(storeChatProvider.notifier);
+
     return SizedBox(
       height: 48,
       child: ListView.builder(
@@ -50,8 +55,11 @@ class _ProfileScrollState extends State<ProfileScroll> {
         padding: EdgeInsets.zero,
         controller: _controller,
         itemBuilder: (context, index) {
-          final option = _scrollOptions[index % _scrollOptions.length];
+          final bg = DialogBg.values[index % scrollOptions.length];
+          final option = scrollOptions[index % scrollOptions.length];
           return FlipCard(
+            onFlipDone: (isFront) =>
+                isFront ? chatNotifier.setDialogBg(bg) : null,
             back: Container(
               width: 60,
               height: 60,
@@ -78,31 +86,6 @@ class _ProfileScrollState extends State<ProfileScroll> {
   }
 }
 
-typedef ScrollOption = ({String front, String back});
-
-List<ScrollOption> get _scrollOptions => [
-      (
-        front: 'assets/images/profile/snake_s.png',
-        back: 'assets/icons/profile/scroll_1.svg'
-      ),
-      (
-        front: 'assets/images/profile/zebra_s.png',
-        back: 'assets/icons/profile/scroll_2.svg'
-      ),
-      (
-        front: 'assets/images/profile/tiger_s.png',
-        back: 'assets/icons/profile/scroll_3.svg'
-      ),
-      (
-        front: 'assets/images/profile/cheeta_s.png',
-        back: 'assets/icons/profile/scroll_4.svg'
-      ),
-      (
-        front: 'assets/images/profile/leopard_s.png',
-        back: 'assets/icons/profile/scroll_5.svg'
-      ),
-      (
-        front: 'assets/images/profile/leaves_s.png',
-        back: 'assets/icons/profile/scroll_6.svg'
-      ),
+List<DialogBgInfo> get scrollOptions => [
+      for (var value in DialogBg.values) ...{getDataDialogBg(value)}
     ];
